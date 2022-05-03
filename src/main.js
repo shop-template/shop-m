@@ -1,4 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import addVant from './plugins/vant'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+addVant(app)
+
+app.mount('#app')
