@@ -1,26 +1,33 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <van-button type="primary">主要按钮</van-button>
-  <van-button type="success">成功按钮</van-button>
-  <van-button type="default">默认按钮</van-button>
-  <van-button type="warning">警告按钮</van-button>
-  <van-button type="danger">危险按钮</van-button>
+  <van-config-provider :theme-vars="themeVars">
+    <div class="page-box">
+      <layout-navbar></layout-navbar>
+      <router-view></router-view>
+      <layout-tabbar></layout-tabbar>
+    </div>
+  </van-config-provider>
 </template>
+
+<script setup>
+import LayoutTabbar from './components/LayoutTabbar.vue'
+import LayoutNavbar from './components/LayoutNavbar.vue'
+
+const themeVars = {
+  tabbarZIndex: 100,
+  navBarZIndex: 100
+}
+</script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--van-base-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-size: var(--van-font-size-md);
+  color: var(--van-gray-8);
+}
+.page-box {
+  min-height: 100vh;
+  background-color: var(--van-gray-2);
 }
 </style>

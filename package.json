@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lodash.merge": "^4.6.2",
     "pinia": "^2.0.13",
     "vant": "^3.4.9",
     "vue": "^3.2.25",
