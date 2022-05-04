@@ -4,7 +4,12 @@ import {
   NavBar,
   Tabbar,
   TabbarItem,
-  Empty
+  Empty,
+  Image as VanImage,
+  Lazyload,
+  Icon,
+  Cell,
+  CellGroup
 } from 'vant'
 
 export default function (app) {
@@ -15,4 +20,9 @@ export default function (app) {
     .use(Tabbar)
     .use(TabbarItem)
     .use(Empty)
+    .use(VanImage)
+    .use(Lazyload)
+    .use(Icon)
+    .use(Cell)
+    .use(CellGroup)
 }
