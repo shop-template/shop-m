@@ -43,6 +43,18 @@ export const useLayoutNavbar = defineStore('layoutNavbar', {
       if (validatorString(path)) this.dontShowList.slice(this.dontShowList.findIndex(x => x === path), 1)
     },
     /**
+     * 隐藏navbar
+     */
+    hideNavbar() {
+      this.show = false
+    },
+    /**
+     * 显示navbar
+     */
+    showNavbar() {
+      this.show = true
+    },
+    /**
      * 获取某个 path 是否显示 navbar
      * @param {String} path 
      * @returns 

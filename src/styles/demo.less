@@ -1,0 +1,26 @@
+@import './common.less';
+@border-radius: 5px;
+
+.page-title {
+  padding: 8px 12px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.block {
+  margin: 8px 12px;
+  color: var(--van-gray-8);
+  background-color: #fff;
+  border-radius: @border-radius;
+  .block-title {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 12px;
+  }
+  .block-body {
+    padding: 8px 12px;
+  }
+  .van-button + .van-button {
+    margin-left: 8px;
+  }
+}

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import merge from 'lodash.merge'
-import { validatorDetailObject, validatorNumber, validatorString } from './../utils'
+import { getType, validatorDetailObject, validatorNumber, validatorString } from './../utils'
 
 export const useLayoutTabbar = defineStore('layoutTabbar', {
   state: () => {
@@ -11,8 +11,6 @@ export const useLayoutTabbar = defineStore('layoutTabbar', {
         fixed: true,
         border: true,
         'z-index': 100,
-        'active-color': '#1989fa',
-        'inactive-color': '#7d7e80',
         route: true,
         placeholder: true,
         'safe-area-inset-bottom': true
@@ -72,17 +70,33 @@ export const useLayoutTabbar = defineStore('layoutTabbar', {
     },
     /**
      * 添加 tabbar
-     * @param {Object} object : { index: 在哪一项后面添加, detail: 设置项的具体内容 }
+     * @param {Object} object : { index: 要添加位置的索引值, detail: 设置项的具体内容 }
      */
     addTabbar(object) {
       if (validatorDetailObject(object)) this.tabbar.splice(object.index, 0, object.detail)
     },
     /**
      * 删除 tabber 的某一项
-     * @param {Number} index : 删除 tabber 的某一项索引值
+     * @param {Number|String} value : 删除 tabber 的某一项索引值或者路由path
      */
-    removeTabbar(index) {
-      if (validatorNumber(index)) this.tabbar.splice(index, 1)
+    removeTabbar(value) {
+      if (getType(value) === 'Number') {
+        this.tabbar.splice(value, 1)
+      } else if (getType(value) === 'String') {
+        this.tabbar.splice(this.tabbar.findIndex(x => x.to === value), 1)
+      }
+    },
+    /**
+     * 隐藏navbar
+     */
+    hideTabbar() {
+      this.show = false
+    },
+    /**
+     * 显示navbar
+     */
+    showTabbar() {
+      this.show = true
     },
     /**
      * 根据 tabbar 中的 to ，返回对应的 name
