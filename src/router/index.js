@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { useLayoutNavbar } from './../store'
+import { useLayoutNavbar } from '@/store'
 
 const HomePage = () => import('../views/home/HomePage.vue')
 const ListPage = () => import('../views/list/ListPage.vue')

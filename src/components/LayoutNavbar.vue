@@ -6,7 +6,7 @@
 <script setup>
 import { watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useLayoutNavbar, useLayoutTabbar } from './../store'
+import { useLayoutNavbar, useLayoutTabbar } from '@/store'
 
 const router = useRouter()
 const route = useRoute()

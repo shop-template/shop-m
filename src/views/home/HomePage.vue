@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { useLayoutTabbar } from './../../store'
+import { useLayoutTabbar } from '@/store'
 
 const layoutTabbar = useLayoutTabbar()
 
