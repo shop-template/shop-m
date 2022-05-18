@@ -19,23 +19,6 @@ const themeVars = {
   tabbarZIndex: 100,
   navBarZIndex: 100
 }
-
-// 跨域iframe通信
-function getParentInfo() {
-  //接受父页面发来的消息
-  window.addEventListener('message', event => {
-    // 根据上面制定的结构来解析iframe内部发回来的数据
-    const data = event.data
-    switch (data.cmd) {
-      case 'setPath':
-        Router.push(data.res.path)
-        break
-    }
-  })
-}
-onMounted(() => {
-  getParentInfo()
-})
 </script>
 
 <style>
