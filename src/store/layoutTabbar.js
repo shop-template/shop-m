@@ -5,9 +5,9 @@ import { getType, validatorDetailObject, validatorNumber, validatorString } from
 export const useLayoutTabbar = defineStore('layoutTabbar', {
   state: () => {
     return {
-      show: true,
-      active: 0,
-      tabbarProps: {
+      show: true, // 可以控制 tabbar 是否显示
+      active: 0, // tabbar 当前选中项
+      tabbarProps: { // tabbar 的 props，https://vant-contrib.gitee.io/vant/#/zh-CN/tabbar#tabbar-props
         fixed: true,
         border: true,
         'z-index': 100,
@@ -15,7 +15,7 @@ export const useLayoutTabbar = defineStore('layoutTabbar', {
         placeholder: true,
         'safe-area-inset-bottom': true
       },
-      tabbar: [
+      tabbar: [ // tabbaritem 的 props， https://vant-contrib.gitee.io/vant/#/zh-CN/tabbar#tabbaritem-props
         {
           name: 0,
           title: '首页',
@@ -87,13 +87,13 @@ export const useLayoutTabbar = defineStore('layoutTabbar', {
       }
     },
     /**
-     * 隐藏navbar
+     * 隐藏tabbar
      */
     hideTabbar() {
       this.show = false
     },
     /**
-     * 显示navbar
+     * 显示tabbar
      */
     showTabbar() {
       this.show = true

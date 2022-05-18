@@ -4,6 +4,7 @@
     <div class="block-title van-hairline--bottom">1. setTabBarItem</div>
     <div class="block-body">
       <van-button size="small" type="primary" @click="setTabBarItemEvent">设置首页</van-button>
+      <van-button size="small" type="primary" @click="setTabBarItem1Event">设置商场</van-button>
     </div>
   </div>
   <div class="block">
@@ -34,6 +35,7 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue'
 import { useLayoutTabbar } from '@/store'
 
 const layoutTabbar = useLayoutTabbar()
@@ -41,6 +43,17 @@ const layoutTabbar = useLayoutTabbar()
 function setTabBarItemEvent () {
   layoutTabbar.setTabBarItem({
     index: 0,
+    detail: {
+      icon: 'wap-home-o',
+      title: 'home',
+      dot: true
+    }
+  })
+}
+
+function setTabBarItem1Event () {
+  layoutTabbar.setTabBarItem({
+    index: 1,
     detail: {
       icon: 'wap-home-o',
       title: 'home',

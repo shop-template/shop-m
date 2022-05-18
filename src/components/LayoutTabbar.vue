@@ -15,6 +15,7 @@ const layoutTabbar = useLayoutTabbar()
 watch(
   route,
   () => {
+    // 切换 tabbar 的 active
     layoutTabbar.active = layoutTabbar.pathToName(route.path)
   },
   {
