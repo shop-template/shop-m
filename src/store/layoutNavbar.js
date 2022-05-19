@@ -17,6 +17,7 @@ export const useLayoutNavbar = defineStore('layoutNavbar', {
         'z-index': 100,
         'safe-area-inset-top': true
       },
+      // 配置不显示 navbar 的 route.path
       dontShowList: []
     }
   },
@@ -27,6 +28,18 @@ export const useLayoutNavbar = defineStore('layoutNavbar', {
      */
     setNavbar(object) {
       if (validatorObject(object)) this.navbarProps = merge(this.navbarProps, object)
+    },
+    /**
+     * 隐藏navbar
+     */
+    hideNavbar() {
+      this.show = false
+    },
+    /**
+     * 显示navbar
+     */
+    showNavbar() {
+      this.show = true
     },
     /**
      * 为不显示 navbar 的列表中新添项
@@ -40,19 +53,7 @@ export const useLayoutNavbar = defineStore('layoutNavbar', {
      * @param {String} path 
      */
     dontShowListRemove(path) {
-      if (validatorString(path)) this.dontShowList.slice(this.dontShowList.findIndex(x => x === path), 1)
-    },
-    /**
-     * 隐藏navbar
-     */
-    hideNavbar() {
-      this.show = false
-    },
-    /**
-     * 显示navbar
-     */
-    showNavbar() {
-      this.show = true
+      if (validatorString(path)) this.dontShowList.splice(this.dontShowList.findIndex(x => x === path), 1)
     },
     /**
      * 获取某个 path 是否显示 navbar

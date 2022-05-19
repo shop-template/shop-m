@@ -14,7 +14,7 @@
     </div>
     <div class="user-body">
       <van-cell-group>
-        <van-cell v-for="item in cellList" v-bind="item" />
+        <van-cell v-for="item in cellList" :key="item.icon" v-bind="item" />
       </van-cell-group>
     </div>
   </div>

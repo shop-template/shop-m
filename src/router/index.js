@@ -6,6 +6,8 @@ const ListPage = () => import('../views/list/ListPage.vue')
 const ShoppingCartPage = () => import('../views/ShoppingCart/ShoppingCartPage.vue')
 const UserPage = () => import('../views/user/UserPage.vue')
 const NotFoundPage = () => import('../views/common/NotFoundPage.vue')
+const tabbar = () => import('../views/demo/tabbar.vue')
+const navBar = () => import('../views/demo/navBar.vue')
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -17,6 +19,24 @@ const router = createRouter({
       meta: {
         requiresAuth: false,
         title: '首页'
+      }
+    },
+    {
+      path: '/navBar',
+      name: 'navBar',
+      component: navBar,
+      meta: {
+        requiresAuth: false,
+        title: 'NavBar 导航栏'
+      }
+    },
+    {
+      path: '/tabbar',
+      name: 'tabbar',
+      component: tabbar,
+      meta: {
+        requiresAuth: false,
+        title: 'Tabbar 标签栏'
       }
     },
     {
@@ -66,9 +86,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  document.title = to.meta.title
-  const layoutNavbar = useLayoutNavbar()
-  layoutNavbar.navbarProps.title = to.meta.title
   return true
 })
 

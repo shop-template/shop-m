@@ -17,6 +17,8 @@ watch(
   () => {
     // 切换 tabbar 的 active
     layoutTabbar.active = layoutTabbar.pathToName(route.path)
+    // 默认只有配置在 layoutTabbar 中的 tabbar 才会展示
+    layoutTabbar.show = layoutTabbar.tabbarToList.includes(route.path)
   },
   {
     deep: true,

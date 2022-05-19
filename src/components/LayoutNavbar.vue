@@ -6,17 +6,18 @@
 <script setup>
 import { watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useLayoutNavbar, useLayoutTabbar } from '@/store'
+import { useLayoutNavbar } from '@/store'
 
 const router = useRouter()
 const route = useRoute()
 const layoutNavbar = useLayoutNavbar()
-const layoutTabbar = useLayoutTabbar()
 
 watch(
   route,
-  () => {
+  (value) => {
     layoutNavbar.show = layoutNavbar.getNavbarShow(route.path)
+    document.title = value.meta.title
+    layoutNavbar.navbarProps.title = value.meta.title
   },
   {
     deep: true,
