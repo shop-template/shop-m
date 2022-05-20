@@ -6,8 +6,8 @@ import { useLayoutTabbar } from './layoutTabbar'
 export const useLayoutNavbar = defineStore('layoutNavbar', {
   state: () => {
     return {
-      show: true,
-      navbarProps: {
+      show: true,  // 可以控制 navbar 是否显示
+      navbarProps: { // navbar 的 props，https://vant-contrib.gitee.io/vant/#/zh-CN/nav-bar#props
         title: '',
         'left-text': '',
         'left-arrow': true,
