@@ -29,7 +29,3 @@ function onClickLeft () {
   router.go(-1)
 }
 </script>
-
-<style scoped>
-
-</style>

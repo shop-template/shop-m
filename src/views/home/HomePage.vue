@@ -6,22 +6,15 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import demoRouters from './../../router/demo'
 
-const cellList = reactive([
-  {
-    title: 'NavBar 导航栏',
-    to: '/navBar',
-    border: true,
-    'is-link': true
-  },
-  {
-    title: 'Tabbar 标签栏',
-    to: '/tabbar',
-    border: true,
+const cellList = demoRouters[0].children.map(item => {
+  return {
+    title: item.meta.title,
+    to: `${demoRouters[0].path}/${item.path}`,
     'is-link': true
   }
-])
+})
 </script>
 
 <style scoped>

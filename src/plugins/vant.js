@@ -9,7 +9,9 @@ import {
   Lazyload,
   Icon,
   Cell,
-  CellGroup
+  CellGroup,
+  Dialog,
+  Notify
 } from 'vant'
 
 export default function (app) {
@@ -25,4 +27,6 @@ export default function (app) {
     .use(Icon)
     .use(Cell)
     .use(CellGroup)
+    .use(Dialog)
+    .use(Notify)
 }

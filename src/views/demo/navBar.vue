@@ -1,5 +1,4 @@
 <template>
-  <div class="page-title">navbar 使用演示</div>
   <div class="block">
     <div class="block-title van-hairline--bottom">1. setNavbar</div>
     <div class="block-body">

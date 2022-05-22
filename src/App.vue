@@ -1,27 +1,34 @@
 <template>
-  <van-config-provider :theme-vars="themeVars">
-    <div class="page-box">
-      <layout-navbar></layout-navbar>
-      <router-view></router-view>
-      <layout-tabbar></layout-tabbar>
-    </div>
-  </van-config-provider>
+  <div class="page-box">
+    <layout-navbar></layout-navbar>
+    <router-view></router-view>
+    <layout-tabbar></layout-tabbar>
+  </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
+import { Notify } from 'vant'
 import LayoutTabbar from './components/LayoutTabbar.vue'
 import LayoutNavbar from './components/LayoutNavbar.vue'
+import { useOnline } from '@vueuse/core'
+
+// 网络监听，当断网时自动提示
+// https://vueuse.org/core/useOnline/
+const online = useOnline()
+watchEffect(() => {
+  if (!online.value) {
+    Notify({ type: 'danger', message: '您当前处于断网，请联网后使用', duration: 0 })
+  } else {
+    Notify.clear()
+  }
+})
 
 const Router = useRouter()
-const themeVars = {
-  tabbarZIndex: 100,
-  navBarZIndex: 100
-}
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: var(--van-base-font-family);
   -webkit-font-smoothing: antialiased;
@@ -33,4 +40,5 @@ const themeVars = {
   min-height: 100vh;
   background-color: var(--van-gray-2);
 }
+@import './styles/common.less';
 </style>
