@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+import { nextTick } from 'vue'
 import { Dialog } from 'vant'
 import { useCssVar } from '@vueuse/core'
 
@@ -35,7 +36,9 @@ function changeDialogConfirmButtonTextColorEvent () {
   } else {
     dialogConfirmButtonTextColor.value = '#1989fa'
   }
-  openDialogEvent()
+  nextTick(() => {
+    openDialogEvent()
+  })
 }
 </script>
 
