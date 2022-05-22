@@ -31,7 +31,8 @@ function openDialogEvent () {
 }
 
 function changeDialogConfirmButtonTextColorEvent () {
-  if (dialogConfirmButtonTextColor.value === '#1989fa') {
+  // 注意：这里加 .trim() 是为了兼容 chrome 在某些情况下 window.getComputedStyle(document.body).getPropertyValue('--van-dialog-confirm-button-text-color') = '  #1989fa' 的问题
+  if (dialogConfirmButtonTextColor.value.trim() === '#1989fa') {
     dialogConfirmButtonTextColor.value = '#f00'
   } else {
     dialogConfirmButtonTextColor.value = '#1989fa'
