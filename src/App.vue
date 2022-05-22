@@ -8,10 +8,11 @@
 
 <script setup>
 import { watchEffect } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { Notify } from 'vant'
 import LayoutTabbar from './components/LayoutTabbar.vue'
 import LayoutNavbar from './components/LayoutNavbar.vue'
+import VConsole from 'vconsole'
 import { useOnline } from '@vueuse/core'
 
 // 网络监听，当断网时自动提示
@@ -26,6 +27,13 @@ watchEffect(() => {
 })
 
 const Router = useRouter()
+const Route = useRoute()
+// 当 Route.query.vconsole 存在时，初始化 vconsole
+watchEffect(() => {
+  if (Route.query.vconsole) {
+    new VConsole()
+  }
+})
 </script>
 
 <style lang="less">
