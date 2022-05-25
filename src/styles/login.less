@@ -1,0 +1,35 @@
+@import './common.less';
+
+.page {
+  min-height: calc(100vh - 46px);
+}
+.tabs-box {
+  padding: @padding-large 0 0;
+  margin: 0 auto;
+  width: 50vw;
+  --van-tabs-nav-background-color: rgba(0,0,0,0);
+}
+.form-box {
+  padding: @padding-large @padding-large 0;
+  .form-button-box {
+    margin-top: @margin-large;
+  }
+}
+.button-text {
+  padding: @padding-small @padding-middle;
+  color: var(--van-blue);
+  font-size: var(--van-font-size-md);
+  line-height: var(--van-line-height-md);
+}
+.page-footer {
+  height: 50px;
+  .page-footer-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: @padding-large 0;
+    .display-flex-center();
+  }
+}

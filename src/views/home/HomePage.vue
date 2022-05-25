@@ -17,6 +17,6 @@ const cellList = demoRouters[0].children.map(item => {
 })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 @import './../../styles/demo.less';
 </style>

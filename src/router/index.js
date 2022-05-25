@@ -7,10 +7,13 @@ const ListPage = () => import('../views/list/ListPage.vue')
 const ShoppingCartPage = () => import('../views/ShoppingCart/ShoppingCartPage.vue')
 const UserPage = () => import('../views/user/UserPage.vue')
 const NotFoundPage = () => import('../views/common/NotFoundPage.vue')
+const LoginPage = () => import('../views/common/LoginPage.vue')
+const RegisterPage = () => import('../views/common/RegisterPage.vue')
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
+    ...demoRouters,
     {
       path: '/',
       name: 'home',
@@ -47,7 +50,24 @@ const router = createRouter({
         title: '我的'
       }
     },
-    ...demoRouters,
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginPage,
+      meta: {
+        requiresAuth: false,
+        title: '登录'
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterPage,
+      meta: {
+        requiresAuth: false,
+        title: '注册'
+      }
+    },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',

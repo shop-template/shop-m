@@ -1,5 +1,4 @@
 import {
-  ConfigProvider,
   Button,
   NavBar,
   Tabbar,
@@ -11,12 +10,17 @@ import {
   Cell,
   CellGroup,
   Dialog,
-  Notify
+  Notify,
+  Form,
+  Field,
+  Tab,
+  Tabs,
+  Checkbox,
+  CheckboxGroup
 } from 'vant'
 
 export default function (app) {
   app
-    .use(ConfigProvider)
     .use(Button)
     .use(NavBar)
     .use(Tabbar)
@@ -29,4 +33,10 @@ export default function (app) {
     .use(CellGroup)
     .use(Dialog)
     .use(Notify)
+    .use(Form)
+    .use(Field)
+    .use(Tab)
+    .use(Tabs)
+    .use(Checkbox)
+    .use(CheckboxGroup)
 }

@@ -1,3 +1,4 @@
+// 用于 layoutTabbar.js、layoutNavbar.js 等公共方法的参数验证
 import { getType } from './getType'
 import { Toast } from 'vant'
 

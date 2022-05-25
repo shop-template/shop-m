@@ -12,7 +12,7 @@
         <van-icon name="arrow" />
       </div>
     </div>
-    <div class="user-body">
+    <div class="user-body mgt-middle">
       <van-cell-group>
         <van-cell v-for="item in cellList" :key="item.icon" v-bind="item" />
       </van-cell-group>
@@ -49,7 +49,7 @@ const cellList = reactive([
 @import './../../styles/common.less';
 .user-page {
   .user-header {
-    padding: @padding-base * 1.5 @padding-base * 2;
+    padding: @padding-middle @padding-large;
     .display-flex-center();
     background-color: #fff;
     &:active {
@@ -67,7 +67,7 @@ const cellList = reactive([
     .user-content {
       flex: auto;
       min-width: 0;
-      margin-left: @margin-base;
+      margin-left: @margin-small;
       .user-name {
         font-size: 18px;
         font-weight: 700;
@@ -79,8 +79,8 @@ const cellList = reactive([
       }
     }
     .user-header-right {
-      padding: 0 @padding-base;
-      margin-right: @margin-base * -1;
+      padding: 0 @padding-small;
+      margin-right: @margin-small * -1;
       height: @size;
       .display-flex-center();
       font-size: 20px;
@@ -88,7 +88,6 @@ const cellList = reactive([
     }
   }
   .user-body {
-    .mgt-md();
   }
 }
 </style>

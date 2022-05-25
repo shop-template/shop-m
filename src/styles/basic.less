@@ -1,0 +1,59 @@
+@space: 8px;
+@img-radius: 5px;
+
+@padding-base: @space;
+@margin-base: @space;
+
+@padding-mini: @padding-base * 0.5;
+@padding-small: @padding-base * 1;
+@padding-middle: @padding-base * 1.5;
+@padding-large: @padding-base * 2;
+
+@margin-mini: @margin-base * 0.5;
+@margin-small: @margin-base * 1;
+@margin-middle: @margin-base * 1.5;
+@margin-large: @margin-base * 2;
+
+@status: {
+  mini: 0.5;
+  small: 1;
+  middle: 1.5;
+  large: 2;
+}
+@selectors: {
+  pd: padding;
+  pdt: padding-top;
+  pdr: padding-right;
+  pdb: padding-bottom;
+  pdl: padding-left;
+  mg: margin;
+  mgt: margin-top;
+  mgr: margin-right;
+  mgb: margin-bottom;
+  mgl: margin-left;
+}
+
+// 生成常用的间距（pd-mini/pd-small/pd-middle/pd-large/pdt-mini..../mgl-large）
+// .pd-mini { padding: 4px }
+// .pd-small { padding: 8px }
+// .pd-middle { padding: 12px }
+// .pd-large { padding: 16px }
+each(@selectors, .(@oValue, @oKey) {
+  each(@status, .(@v, @k) {
+    .@{oKey}-@{k} {
+      @{oValue}: @space * @v;
+    }
+  })
+})
+
+.display-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.display-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
