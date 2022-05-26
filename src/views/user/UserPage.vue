@@ -1,12 +1,17 @@
 <template>
   <div class="user-page">
-    <div class="user-header">
+    <div @click="userHeaderClick" class="user-header">
       <div class="user-img-box">
-        <van-image class="user-img" lazy-load src="https://img.fxss.work/header-1583418772000-23-production"></van-image>
+        <van-image class="user-img" lazy-load :src="userInfo.headerImg"></van-image>
       </div>
       <div class="user-content">
-        <div class="user-name van-ellipsis">樊小书生</div>
-        <div class="user-account van-ellipsis">账号：13000001111</div>
+        <template v-if="userStore.isLogin">
+          <div class="user-name van-ellipsis">{{ userInfo.name }}</div>
+          <div class="user-account van-ellipsis">账号：{{ userInfo.account }}</div>
+        </template>
+        <template v-else>
+          <div class="user-name van-ellipsis">登录 | 注册</div>
+        </template>
       </div>
       <div class="user-header-right">
         <van-icon name="arrow" />
@@ -22,6 +27,27 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useUserStore } from '@/store'
+import cookie from '@/plugins/cookie'
+
+const router = useRouter()
+const route = useRoute()
+const userStore = useUserStore()
+const userToken = cookie.get('token')
+const { userInfo, isLogin } = storeToRefs(userStore)
+if (userToken && !isLogin.value) {
+  userStore.getUserInfoFn()
+}
+
+function userHeaderClick () {
+  if (!isLogin.value) {
+    router.push({ path: '/login', query: { from: 'user' } })
+  } else {
+    router.push({ path: '/userInfo' })
+  }
+}
 
 const cellList = reactive([
   {
@@ -72,10 +98,12 @@ const cellList = reactive([
         font-size: 18px;
         font-weight: 700;
         line-height: 38px;
+        height: 38px;
       }
       .user-account {
         font-size: 14px;
         line-height: 30px;
+        height: 30px;
       }
     }
     .user-header-right {
@@ -86,8 +114,6 @@ const cellList = reactive([
       font-size: 20px;
       color: var(--van-cell-right-icon-color);
     }
-  }
-  .user-body {
   }
 }
 </style>

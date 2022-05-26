@@ -30,15 +30,27 @@
               <div v-else>{{ countDown.current.value.seconds }}秒</div>
             </template>
           </van-field>
+          <van-field
+            v-model="password"
+            type="password"
+            name="password"
+            label="密码"
+            required
+            clearable
+            center
+            autocomplete="current-password"
+            placeholder="请输入密码"
+            :rules="[{ required: true, message: '请输入密码' }]"
+          />
         </van-cell-group>
         <div class="form-button-box">
-          <van-button round block type="primary" native-type="submit">注册</van-button>
+          <van-button round block type="primary" native-type="submit">修改密码</van-button>
         </div>
       </van-form>
     </div>
     <div class="display-flex-between mg-small">
       <div class="button-text" @click="goLoginPath">登录</div>
-      <div class="button-text" @click="goForgetPath">忘记密码</div>
+      <div class="button-text" @click="goRegisterPath">注册</div>
     </div>
     <div class="page-footer">
       <div class="page-footer-wrap van-safe-area-bottom">
@@ -61,13 +73,14 @@ const route = useRoute()
 function goLoginPath () {
   router.replace({ path: '/login' })
 }
-function goForgetPath () {
-  router.replace({ path: '/forget' })
+function goRegisterPath () {
+  router.replace({ path: '/register' })
 }
 
 const logoForm = ref(null)
 const phone = ref('')
 const sms = ref('')
+const password = ref('')
 
 const userAgreement = ref(false)
 const smsBtnShow = ref(true)

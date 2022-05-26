@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { useLayoutNavbar } from '@/store'
 import demoRouters from './demo'
 
 const HomePage = () => import('../views/home/HomePage.vue')
@@ -9,6 +8,8 @@ const UserPage = () => import('../views/user/UserPage.vue')
 const NotFoundPage = () => import('../views/common/NotFoundPage.vue')
 const LoginPage = () => import('../views/common/LoginPage.vue')
 const RegisterPage = () => import('../views/common/RegisterPage.vue')
+const ForgetPage = () => import('../views/common/ForgetPage.vue')
+const UserInfoPage = () => import('../views/user/UserInfoPage.vue')
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -33,8 +34,8 @@ const router = createRouter({
       }
     },
     {
-      path: '/shopping-cart',
-      name: 'shopping-cart',
+      path: '/shoppingCart',
+      name: 'shoppingCart',
       component: ShoppingCartPage,
       meta: {
         requiresAuth: true,
@@ -45,6 +46,15 @@ const router = createRouter({
       path: '/user',
       name: 'user',
       component: UserPage,
+      meta: {
+        requiresAuth: false,
+        title: '我的'
+      }
+    },
+    {
+      path: '/userInfo',
+      name: 'userInfo',
+      component: UserInfoPage,
       meta: {
         requiresAuth: false,
         title: '我的'
@@ -66,6 +76,15 @@ const router = createRouter({
       meta: {
         requiresAuth: false,
         title: '注册'
+      }
+    },
+    {
+      path: '/forget',
+      name: 'forget',
+      component: ForgetPage,
+      meta: {
+        requiresAuth: false,
+        title: '忘记密码'
       }
     },
     {

@@ -40,7 +40,7 @@ export const useLayoutTabbar = defineStore('layoutTabbar', {
           icon: 'cart-o',
           dot: false,
           badge: '',
-          to: '/shopping-cart',
+          to: '/shoppingCart',
           replace: true
         },
         {

@@ -67,8 +67,8 @@
       </van-form>
     </div>
     <div class="display-flex-between mg-small">
-      <div class="button-text">注册</div>
-      <div class="button-text">忘记密码</div>
+      <div class="button-text" @click="goRegisterPath">注册</div>
+      <div class="button-text" @click="goForgetPath">忘记密码</div>
     </div>
     <div class="page-footer">
       <div class="page-footer-wrap van-safe-area-bottom">
@@ -80,9 +80,21 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { Toast } from 'vant'
 import { useCountDown } from '@vant/use'
-import { phonePattern, smsPattern } from '@/utils/formPattern.js'
+import { phonePattern, smsPattern } from '@/utils'
+import { useUserStore } from '@/store'
+
+const router = useRouter()
+const route = useRoute()
+
+function goRegisterPath () {
+  router.replace({ path: '/register' })
+}
+function goForgetPath () {
+  router.replace({ path: '/forget' })
+}
 
 const tabList = [
   { label: '密码登录', value: 0 },
@@ -122,11 +134,22 @@ function sendSmsEvent () {
     })
 }
 
+const userStore = useUserStore()
 const onSubmit = (values) => {
   console.log('submit', values)
   if (!userAgreement.value) {
     Toast.fail('请阅读并勾选用户协议')
+    return false
   }
+  userStore.loginInFn().then(res => {
+    if (route.query.from) {
+      router.push({ name: route.query.from })
+    } else {
+      router.push({ path: '/user' })
+    }
+  }).catch(err => {
+    console.log(err)
+  })
 }
 </script>
 

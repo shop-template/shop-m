@@ -16,8 +16,12 @@ import {
   Tab,
   Tabs,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Toast
 } from 'vant'
+
+Toast.setDefaultOptions('loading', { forbidClick: true, duration: 0 })
+Toast.allowMultiple()
 
 export default function (app) {
   app
@@ -39,4 +43,5 @@ export default function (app) {
     .use(Tabs)
     .use(Checkbox)
     .use(CheckboxGroup)
+    .use(Toast)
 }
