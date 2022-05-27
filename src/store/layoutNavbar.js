@@ -27,7 +27,11 @@ export const useLayoutNavbar = defineStore('layoutNavbar', {
      * @param {Object} object 
      */
     setNavbar(object) {
-      if (validatorObject(object)) this.navbarProps = merge(this.navbarProps, object)
+      if (validatorObject(object)) {
+        this.$patch((state) => {
+          state.navbarProps = merge(this.navbarProps, object)
+        })
+      }
     },
     /**
      * 隐藏navbar
@@ -46,14 +50,22 @@ export const useLayoutNavbar = defineStore('layoutNavbar', {
      * @param {String} path 
      */
     dontShowListAdd(path) {
-      if (validatorString(path)) this.dontShowList.push(path)
+      if (validatorString(path)) {
+        this.$patch((state) => {
+          state.dontShowList.push(path)
+        })
+      }
     },
     /**
      * 为不显示 navbar 的列表中删除项
      * @param {String} path 
      */
     dontShowListRemove(path) {
-      if (validatorString(path)) this.dontShowList.splice(this.dontShowList.findIndex(x => x === path), 1)
+      if (validatorString(path)) {
+        this.$patch((state) => {
+          state.dontShowList.splice(this.dontShowList.findIndex(x => x === path), 1)
+        })
+      }
     },
     /**
      * 获取某个 path 是否显示 navbar

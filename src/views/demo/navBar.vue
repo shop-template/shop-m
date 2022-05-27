@@ -62,15 +62,15 @@ function showNavbarEvent () {
 }
 
 function dontShowListAddEvent () {
-  layoutNavbar.dontShowListAdd('/navBar')
+  layoutNavbar.dontShowListAdd('/demo/navBar')
 }
 
 function dontShowListRemoveEvent () {
-  layoutNavbar.dontShowListRemove('/navBar')
+  layoutNavbar.dontShowListRemove('/demo/navBar')
 }
 
 function getNavbarShowEvent () {
-  layoutNavbar.show = layoutNavbar.getNavbarShow('/navBar')
+  layoutNavbar.show = layoutNavbar.getNavbarShow('/demo/navBar')
 }
 </script>
 

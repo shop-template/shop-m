@@ -22,7 +22,7 @@ export default {
     return cookies.getAll(options)
   },
   remove(name, options) {
-    cookies.remove(name, options)
+    cookies.remove(getPrefix(name), options)
   },
   cookiesInstance: cookies
 }

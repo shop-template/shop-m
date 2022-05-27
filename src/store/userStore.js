@@ -29,8 +29,8 @@ export const useUserStore = defineStore('userStore', {
         setTimeout(() => {
           toast.clear()
           cookie.set('token', this.demoCookie, { path: '/', expires: 7 })
-          this.$patch({
-            userInfo: this.demoUserInfo
+          this.$patch((state) => {
+            state.userInfo = state.demoUserInfo
           })
           resolve(this.demoUserInfo)
         }, 2000)
@@ -44,9 +44,10 @@ export const useUserStore = defineStore('userStore', {
         setTimeout(() => {
           toast.clear()
           cookie.remove('token', { path: '/' })
-          this.$patch({
-            userInfo: {}
+          this.$patch((state) => {
+            state.userInfo = {}
           })
+          console.log('userInfo', this.userInfo)
           resolve()
         }, 2000)
       })
@@ -58,8 +59,8 @@ export const useUserStore = defineStore('userStore', {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           toast.clear()
-          this.$patch({
-            userInfo: this.demoUserInfo
+          this.$patch((state) => {
+            state.userInfo = state.demoUserInfo
           })
           resolve()
         }, 2000)
