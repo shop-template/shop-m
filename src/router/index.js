@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import permission from './permission'
 import demoRouters from './demo'
 
 const HomePage = () => import('../views/home/HomePage.vue')
@@ -56,8 +57,8 @@ const router = createRouter({
       name: 'userInfo',
       component: UserInfoPage,
       meta: {
-        requiresAuth: false,
-        title: '我的'
+        requiresAuth: true,
+        title: '个人信息'
       }
     },
     {
@@ -106,8 +107,6 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from) => {
-  return true
-})
+permission(router)
 
 export default router

@@ -35,7 +35,7 @@ import cookie from '@/plugins/cookie'
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
-const userToken = cookie.get('token')
+const userToken = cookie.get(import.meta.env.VITE_token)
 const { userInfo, isLogin } = storeToRefs(userStore)
 if (userToken && !isLogin.value) {
   userStore.getUserInfoFn()
@@ -81,15 +81,6 @@ const cellList = reactive([
     &:active {
       background-color: var(--van-cell-active-color);
     }
-    @size: 68px;
-    .user-img-box,
-    .user-img {
-      flex: 0 0 @size;
-      width: @size;
-      height: @size;
-      border-radius: @img-radius;
-      overflow: hidden;
-    }
     .user-content {
       flex: auto;
       min-width: 0;
@@ -109,7 +100,7 @@ const cellList = reactive([
     .user-header-right {
       padding: 0 @padding-small;
       margin-right: @margin-small * -1;
-      height: @size;
+      height: 68px;
       .display-flex-center();
       font-size: 20px;
       color: var(--van-cell-right-icon-color);

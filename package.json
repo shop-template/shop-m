@@ -11,6 +11,7 @@
     "@vant/use": "^1.4.0",
     "@vueuse/core": "^8.5.0",
     "@vueuse/integrations": "^8.5.0",
+    "compressorjs": "^1.1.1",
     "dayjs": "^1.11.2",
     "lodash.merge": "^4.6.2",
     "pinia": "^2.0.13",

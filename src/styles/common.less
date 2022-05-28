@@ -1,3 +1,17 @@
 @import './van/index.less';
 @import './basic.less';
 
+@user-img-size: 68px;
+.user-img-box,
+.user-img {
+  flex: 0 0 @user-img-size;
+  width: @user-img-size;
+  height: @user-img-size;
+  border-radius: @img-radius;
+  overflow: hidden;
+}
+
+.button--text-blank_white-bg {
+  color: var(--van-gray-8) !important;
+}
+

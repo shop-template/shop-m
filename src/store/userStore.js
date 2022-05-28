@@ -25,10 +25,11 @@ export const useUserStore = defineStore('userStore', {
       const toast = Toast.loading({
         message: '加载中...'
       })
+      console.log('loginInFn')
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           toast.clear()
-          cookie.set('token', this.demoCookie, { path: '/', expires: 7 })
+          cookie.set(import.meta.env.VITE_token, this.demoCookie, { path: '/', expires: 7 })
           this.$patch((state) => {
             state.userInfo = state.demoUserInfo
           })
@@ -40,10 +41,11 @@ export const useUserStore = defineStore('userStore', {
       const toast = Toast.loading({
         message: '加载中...'
       })
+      console.log('loginOutFn')
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           toast.clear()
-          cookie.remove('token', { path: '/' })
+          cookie.remove(import.meta.env.VITE_token, { path: '/' })
           this.$patch((state) => {
             state.userInfo = {}
           })
@@ -56,6 +58,7 @@ export const useUserStore = defineStore('userStore', {
       const toast = Toast.loading({
         message: '加载中...'
       })
+      console.log('getUserInfoFn')
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           toast.clear()
