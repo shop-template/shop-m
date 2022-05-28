@@ -2,7 +2,8 @@
   <div class="user-page">
     <div @click="userHeaderClick" class="user-header">
       <div class="user-img-box">
-        <van-image class="user-img" lazy-load :src="userInfo.headerImg"></van-image>
+        <van-image v-if="userInfo.headerImg" class="user-img" lazy-load :src="userInfo.headerImg" @click.stop="userImgPreview"></van-image>
+        <van-image v-else class="user-img" lazy-load></van-image>
       </div>
       <div class="user-content">
         <template v-if="userStore.isLogin">
@@ -22,11 +23,15 @@
         <van-cell v-for="item in cellList" :key="item.icon" v-bind="item" />
       </van-cell-group>
     </div>
+
+    <van-image-preview v-model:show="userImgShow" :images="[userInfo.headerImg]" closeable>
+      <template v-slot:index>{{ userInfo.name }}</template>
+    </van-image-preview>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/store'
@@ -47,6 +52,11 @@ function userHeaderClick () {
   } else {
     router.push({ path: '/userInfo' })
   }
+}
+
+const userImgShow = ref(false)
+function userImgPreview () {
+  userImgShow.value = true
 }
 
 const cellList = reactive([

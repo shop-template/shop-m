@@ -27,14 +27,14 @@ const { userInfo } = storeToRefs(userStore)
 const featureList = computed(() => {
   return [
     {
-      title: '名字',
-      value: userInfo.name,
-      to: ''
+      title: '名称',
+      value: userInfo.value.name,
+      to: '/changeName'
     },
     {
       title: '修改密码',
-      value: userInfo.name,
-      to: ''
+      value: '',
+      to: '/changePassword'
     },
     {
       title: '我的地址',
@@ -76,7 +76,7 @@ function userImgAfterRead (file) {
   setTimeout(() => {
     toast.clear()
     userStore.userInfo.headerImg = file.content
-  }, 2000)
+  }, 1000)
 }
 
 function loginOutEvent () {

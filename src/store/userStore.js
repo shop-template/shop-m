@@ -34,7 +34,7 @@ export const useUserStore = defineStore('userStore', {
             state.userInfo = state.demoUserInfo
           })
           resolve(this.demoUserInfo)
-        }, 2000)
+        }, 1000)
       })
     },
     async loginOutFn() {
@@ -51,7 +51,7 @@ export const useUserStore = defineStore('userStore', {
           })
           console.log('userInfo', this.userInfo)
           resolve()
-        }, 2000)
+        }, 1000)
       })
     },
     async getUserInfoFn() {
@@ -66,7 +66,7 @@ export const useUserStore = defineStore('userStore', {
             state.userInfo = state.demoUserInfo
           })
           resolve()
-        }, 2000)
+        }, 1000)
       })
     }
   }

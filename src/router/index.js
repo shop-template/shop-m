@@ -11,6 +11,8 @@ const LoginPage = () => import('../views/common/LoginPage.vue')
 const RegisterPage = () => import('../views/common/RegisterPage.vue')
 const ForgetPage = () => import('../views/common/ForgetPage.vue')
 const UserInfoPage = () => import('../views/user/UserInfoPage.vue')
+const ChangeNamePage = () => import('../views/user/ChangeNamePage.vue')
+const ChangePasswordPage = () => import('../views/user/ChangePasswordPage.vue')
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -59,6 +61,24 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         title: '个人信息'
+      }
+    },
+    {
+      path: '/changeName',
+      name: 'changeName',
+      component: ChangeNamePage,
+      meta: {
+        requiresAuth: true,
+        title: '修改名称'
+      }
+    },
+    {
+      path: '/changePassword',
+      name: 'changePassword',
+      component: ChangePasswordPage,
+      meta: {
+        requiresAuth: true,
+        title: '修改密码'
       }
     },
     {

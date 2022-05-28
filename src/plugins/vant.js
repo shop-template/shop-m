@@ -18,7 +18,8 @@ import {
   Checkbox,
   CheckboxGroup,
   Toast,
-  Uploader
+  Uploader,
+  ImagePreview
 } from 'vant'
 
 Toast.setDefaultOptions('loading', { forbidClick: true, duration: 0 })
@@ -46,4 +47,5 @@ export default function (app) {
     .use(CheckboxGroup)
     .use(Toast)
     .use(Uploader)
+    .use(ImagePreview)
 }
