@@ -44,7 +44,7 @@ const featureList = computed(() => {
   ]
 })
 
-// 头像上传最大 5M
+// 头像上传最大 5M (图片经过 compressorjs 压缩之后的大小)
 const userImgMaxSize = 5 * 1024 * 1024
 const userImgUploader = ref(null)
 function choseUserImgEvent () {
@@ -52,7 +52,7 @@ function choseUserImgEvent () {
 }
 function userImgBeforeRead (file) {
   return new Promise((resolve) => {
-    // compressorjs 默认开启 checkOrientation 选项，并且针对 jpg/jpeg 图像会做压缩处理
+    // compressorjs 默认开启 checkOrientation 选项、图片压缩
     new Compressor(file, {
       success: resolve,
       error(err) {
@@ -81,7 +81,7 @@ function userImgAfterRead (file) {
 
 function loginOutEvent () {
   userStore.loginOutFn().then(res => {
-    router.push('/login')
+    router.replace('/login')
   }).catch(err => {
     console.log(err)
   })
