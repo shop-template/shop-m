@@ -1,18 +1,15 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import permission from './permission'
+import userRouter from './user'
 import demoRouters from './demo'
 
 const HomePage = () => import('../views/home/HomePage.vue')
 const ListPage = () => import('../views/list/ListPage.vue')
 const ShoppingCartPage = () => import('../views/ShoppingCart/ShoppingCartPage.vue')
-const UserPage = () => import('../views/user/UserPage.vue')
 const NotFoundPage = () => import('../views/common/NotFoundPage.vue')
 const LoginPage = () => import('../views/common/LoginPage.vue')
 const RegisterPage = () => import('../views/common/RegisterPage.vue')
 const ForgetPage = () => import('../views/common/ForgetPage.vue')
-const UserInfoPage = () => import('../views/user/UserInfoPage.vue')
-const ChangeNamePage = () => import('../views/user/ChangeNamePage.vue')
-const ChangePasswordPage = () => import('../views/user/ChangePasswordPage.vue')
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -45,42 +42,8 @@ const router = createRouter({
         title: '购物车'
       }
     },
-    {
-      path: '/user',
-      name: 'user',
-      component: UserPage,
-      meta: {
-        requiresAuth: false,
-        title: '我的'
-      }
-    },
-    {
-      path: '/userInfo',
-      name: 'userInfo',
-      component: UserInfoPage,
-      meta: {
-        requiresAuth: true,
-        title: '个人信息'
-      }
-    },
-    {
-      path: '/changeName',
-      name: 'changeName',
-      component: ChangeNamePage,
-      meta: {
-        requiresAuth: true,
-        title: '修改名称'
-      }
-    },
-    {
-      path: '/changePassword',
-      name: 'changePassword',
-      component: ChangePasswordPage,
-      meta: {
-        requiresAuth: true,
-        title: '修改密码'
-      }
-    },
+    // 用户路由
+    ...userRouter,
     {
       path: '/login',
       name: 'login',

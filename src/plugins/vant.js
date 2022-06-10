@@ -19,7 +19,9 @@ import {
   CheckboxGroup,
   Toast,
   Uploader,
-  ImagePreview
+  ImagePreview,
+  AddressList,
+  AddressEdit
 } from 'vant'
 
 Toast.setDefaultOptions('loading', { forbidClick: true, duration: 0 })
@@ -48,4 +50,6 @@ export default function (app) {
     .use(Toast)
     .use(Uploader)
     .use(ImagePreview)
+    .use(AddressList)
+    .use(AddressEdit)
 }

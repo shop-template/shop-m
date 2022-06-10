@@ -39,7 +39,7 @@ const featureList = computed(() => {
     {
       title: '我的地址',
       value: userInfo.name,
-      to: ''
+      to: '/addressList'
     }
   ]
 })
