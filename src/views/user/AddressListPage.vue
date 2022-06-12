@@ -32,7 +32,7 @@ const list = [
     tel: '1310000000',
     address: '浙江省杭州市拱墅区莫干山路 50 号',
   },
-];
+]
 const disabledList = [
   {
     id: '3',
@@ -49,7 +49,7 @@ const onEdit = (item, index) => Toast('编辑地址:' + index)
 <style lang="less" scoped>
 @import './../../styles/login.less';
 .address-list {
-  :deep(.van-address-item .van-tag--danger) {
+  :deep(.van-address-item .van-tag) {
     background: var(--van-blue);
   }
   :deep(.van-address-list__bottom .van-button) {

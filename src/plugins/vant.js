@@ -21,7 +21,8 @@ import {
   Uploader,
   ImagePreview,
   AddressList,
-  AddressEdit
+  AddressEdit,
+  Area
 } from 'vant'
 
 Toast.setDefaultOptions('loading', { forbidClick: true, duration: 0 })
@@ -52,4 +53,5 @@ export default function (app) {
     .use(ImagePreview)
     .use(AddressList)
     .use(AddressEdit)
+    .use(Area)
 }
