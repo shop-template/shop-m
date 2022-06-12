@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "devF": "vite --force",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -16,7 +17,7 @@
     "lodash.merge": "^4.6.2",
     "pinia": "^2.0.13",
     "universal-cookie": "^4.0.4",
-    "vant": "^3.4.9",
+    "vant": "3.4.9",
     "vconsole": "^3.14.6",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"
