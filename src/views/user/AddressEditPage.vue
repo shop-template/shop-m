@@ -1,6 +1,7 @@
 <template>
   <van-address-edit
     :area-list="areaList"
+    :address-info="addressInfo"
     show-postal
     show-delete
     show-set-default
@@ -16,23 +17,57 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { Toast } from 'vant'
 import { areaList } from '@vant/area-data'
+import addressList from './addressList'
+import { useLayoutNavbar } from '@/store'
 
-const onSave = () => Toast('save')
-const onDelete = () => Toast('delete')
+const layoutNavbar = useLayoutNavbar()
+
+const addressInfo = ref({})
+const Route = useRoute()
+onMounted(() => {
+  if (Route.query.id) {
+    addressInfo.value = addressList.find(x => x.id === Route.query.id * 1)
+    layoutNavbar.setNavbar({
+      title: '编辑地址'
+    })
+  } else {
+    layoutNavbar.setNavbar({
+      title: '新增地址'
+    })
+  }
+})
+
+const onSave = (content) => {
+  console.log(content)
+}
+const onDelete = (content) => {
+  console.log(content)
+}
 
 // 详细地址搜索的逻辑
 const searchResult = ref([])
 const onChangeDetail = (val) => {
+  console.log(val)
   if (val) {
-    searchResult.value = [
-      {
-        name: '黄龙万科中心',
-        address: '杭州市西湖区',
-      },
-    ]
+    if (val.includes('白求恩')) {
+      searchResult.value = [
+        {
+          name: '白求恩医院',
+          address: '山西白求恩医院(山西医学科学院)',
+        },
+      ]
+    } else {
+      searchResult.value = [
+        {
+          name: '虹桥火车站',
+          address: '上海市闵行区',
+        },
+      ]
+    }
   } else {
     searchResult.value = []
   }
