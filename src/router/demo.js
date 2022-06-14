@@ -67,7 +67,7 @@ export default [
         component: signaturePad,
         meta: {
           requiresAuth: false,
-          title: '签字板'
+          title: 'SignaturePad 签字板'
         }
       },
     ]
