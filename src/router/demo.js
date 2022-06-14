@@ -4,6 +4,7 @@ const tabbar = () => import('../views/demo/tabbar.vue')
 const navBar = () => import('../views/demo/navBar.vue')
 const network = () => import('../views/demo/network.vue')
 const vconsole = () => import('../views/demo/vconsole.vue')
+const signaturePad = () => import('../views/demo/signaturePad.vue')
 
 export default [
   {
@@ -58,6 +59,15 @@ export default [
         meta: {
           requiresAuth: false,
           title: 'vconsole 移动端控制台'
+        }
+      },
+      {
+        path: 'signaturePad',
+        name: 'signaturePad',
+        component: signaturePad,
+        meta: {
+          requiresAuth: false,
+          title: '签字板'
         }
       },
     ]
