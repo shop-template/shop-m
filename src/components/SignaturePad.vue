@@ -27,6 +27,11 @@ import trimCanvas from 'trim-canvas'
 import { download } from '@/utils'
 
 const props = defineProps({
+  // 是否展示上方工具栏颜色切换、清除签名
+  toolShow: {
+    type: Boolean,
+    default: true
+  },
   // 色组
   colors: {
     type: Array,
@@ -43,11 +48,6 @@ const props = defineProps({
   downloadName: {
     type: String,
     default: 'signature'
-  },
-  // 是否展示上方工具栏颜色切换、清除签名
-  toolShow: {
-    type: Boolean,
-    default: true
   }
 })
 

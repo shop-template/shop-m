@@ -1,6 +1,6 @@
 <template>
   <div class="block" style="margin-left: 0;margin-right: 0;">
-    <div class="block-title van-hairline--bottom">签字板演示</div>
+    <div class="block-title van-hairline--bottom">签字板简单演示</div>
     <div class="block-body" style="padding: 0;">
       <signature-pad></signature-pad>
     </div>
@@ -9,16 +9,16 @@
     <div class="block-title van-hairline--bottom" style="background: #fff;">签字板获取纯签名演示</div>
     <div class="block-body" style="padding: 0;">
       <signature-pad ref="signaturePad1" :isTrimCanvas="true" downloadName="签名"></signature-pad>
-      <div class="pdt-small pdl-middle pdr-middle pdb-mini">
+      <div class="pdt-small pdl-middle pdb-mini">
         <van-button type="success" @click="getIsEmpty1">画板是否为空</van-button>
         <van-button type="default" @click="clear1">清空画板</van-button>
         <van-button type="warning" @click="changeColor1">修改画笔颜色</van-button>
       </div>
-      <div class="pdt-mini pdl-middle pdr-middle pdb-small">
+      <div class="pdt-mini pdl-middle pdb-small">
         <van-button type="danger" @click="download1">下载签名（png）</van-button>
         <van-button type="primary" @click="getSignature1">获取纯签名</van-button>
       </div>
-      <div class="pdl-middle pdr-middle">
+      <div class="pdl-middle">
         <div class="pdt-small pdb-small">纯签名：</div>
         <img v-if="canvasDataURL1" :src="canvasDataURL1" style="width: 100px">
       </div>
@@ -28,17 +28,20 @@
     <div class="block-title van-hairline--bottom" style="background: #fff;">签字板演示</div>
     <div class="block-body" style="padding: 0;">
       <signature-pad ref="signaturePad2" :colors="colors" :isTrimCanvas="false" downloadName="签名2"></signature-pad>
-      <div class="pdt-small pdl-middle pdr-middle pdb-mini">
+      <div class="pdt-small pdl-middle pdb-mini">
         <van-button type="success" @click="getIsEmpty2">画板是否为空</van-button>
         <van-button type="default" @click="clear2">清空画板</van-button>
         <van-button type="warning" @click="changeColor2">修改画笔颜色</van-button>
       </div>
-      <div class="pdt-mini pdl-middle pdr-middle pdb-small">
-        <van-button type="danger" @click="download2">下载签名（png）</van-button>
+      <div class="pdt-mini pdl-middle pdb-small">
+        <van-button type="danger" @click="download2">下载签名（jpg）</van-button>
+        <van-button type="danger" @click="download2png">下载签名（png）</van-button>
+      </div>
+      <div class="pdt-mini pdl-middle pdb-small">
         <van-button type="primary" @click="getSignature2">获取签名</van-button>
       </div>
-      <div class="pdl-middle pdr-middle">
-        <div class="pdt-small pdb-small">纯签名：</div>
+      <div class="pdl-middle">
+        <div class="pdt-small pdb-small">签名：</div>
         <img v-if="canvasDataURL2" :src="canvasDataURL2" style="width: 100px">
       </div>
     </div>
@@ -93,6 +96,9 @@ const changeColor2 = () => {
 
 const download2 = () => {
   signaturePad2.value.saveAsJpg()
+}
+const download2png = () => {
+  signaturePad2.value.saveAsPng('download2png')
 }
 
 const getSignature2 = () => {
