@@ -16,8 +16,10 @@ watch(
   route,
   (value) => {
     layoutNavbar.show = layoutNavbar.getNavbarShow(route.path)
-    document.title = value.meta.title
-    layoutNavbar.navbarProps.title = value.meta.title
+    if (value.meta.title) {
+      document.title = value.meta.title
+      layoutNavbar.navbarProps.title = value.meta.title
+    }
   },
   {
     deep: true,

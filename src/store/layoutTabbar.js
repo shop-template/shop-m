@@ -51,6 +51,15 @@ export const useLayoutTabbar = defineStore('layoutTabbar', {
           badge: '',
           to: '/user',
           replace: true
+        },
+        {
+          name: 4,
+          title: '演示',
+          icon: 'tv-o',
+          dot: false,
+          badge: '',
+          to: '/demoList',
+          replace: true
         }
       ]
     }

@@ -1,3 +1,4 @@
+const demoList = () => import('../views/demo/indexPage.vue')
 const demoLayout = () => import('../views/demo/demoLayout.vue')
 const cssVar = () => import('../views/demo/cssVar.vue')
 const tabbar = () => import('../views/demo/tabbar.vue')
@@ -7,6 +8,15 @@ const vconsole = () => import('../views/demo/vconsole.vue')
 const signaturePad = () => import('../views/demo/signaturePad.vue')
 
 export default [
+  {
+    path: '/demoList',
+    name: 'demoList',
+    component: demoList,
+    meta: {
+      requiresAuth: false,
+      title: 'shop-m 项目演示'
+    }
+  },
   {
     path: '/demo',
     name: 'demoLayout',
