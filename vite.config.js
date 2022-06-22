@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import styleImport, { VantResolve } from 'vite-plugin-style-import'
@@ -16,5 +16,8 @@ export default defineConfig({
     styleImport({
       resolves: [VantResolve()],
     }),
-  ]
+  ],
+  test: {
+    environment: 'jsdom'
+  }
 })
