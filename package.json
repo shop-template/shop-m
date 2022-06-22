@@ -13,6 +13,8 @@
     "@vant/use": "^1.4.0",
     "@vueuse/core": "^8.5.0",
     "@vueuse/integrations": "^8.5.0",
+    "axios": "^0.27.2",
+    "axios-retry": "^3.2.5",
     "compressorjs": "^1.1.1",
     "dayjs": "^1.11.2",
     "lodash.merge": "^4.6.2",
