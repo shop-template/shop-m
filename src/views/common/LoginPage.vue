@@ -97,20 +97,20 @@ function goForgetPath () {
 }
 
 const tabList = [
-  { label: '密码登录', value: 0 },
-  { label: '验证码登录', value: 1 }
+  { label: '验证码登录', value: 1 },
+  { label: '密码登录', value: 0 }
 ]
 const tabActive = ref(tabList[0].value)
 
 const logoForm = ref(null)
 // 密码
-const username = ref('')
-const password = ref('')
+const username = ref('aaa')
+const password = ref('123456')
 // 验证码
 const phone = ref('')
 const sms = ref('')
 
-const userAgreement = ref(false)
+const userAgreement = ref(true)
 const smsBtnShow = ref(true)
 
 // 倒计时
@@ -136,12 +136,20 @@ function sendSmsEvent () {
 
 const userStore = useUserStore()
 const onSubmit = (values) => {
-  console.log('submit', values)
   if (!userAgreement.value) {
     Toast.fail('请阅读并勾选用户协议')
     return false
   }
-  userStore.loginInFn().then(res => {
+
+  let params
+  if (tabActive.value === 0) {
+    params = {
+      username: username.value,
+      password: password.value
+    }
+  }
+
+  userStore.loginInFn(params).then(res => {
     if (route.query.from) {
       router.push({ name: route.query.from })
     } else {

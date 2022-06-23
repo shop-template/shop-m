@@ -5,6 +5,13 @@ import { Toast } from 'vant'
 let loadingInstance = null
 let requestNum = 0
 
+const instance = axios.create({
+  baseURL: '/api',
+  timeout: 3000, //超时配置
+  withCredentials: true, //跨域携带cookie
+})
+axiosRetry(instance, { retries: 3 })
+
 const addLoading = () => {
   requestNum++
   if (requestNum == 1) {
@@ -19,13 +26,6 @@ const cancelLoading = () => {
   requestNum--
   if (requestNum === 0) loadingInstance?.clear()
 }
-
-const instance = axios.create({
-  timeout: 3000, //超时配置
-  withCredentials: true, //跨域携带cookie
-})
-
-axiosRetry(instance, { retries: 3 })
 
 // 添加请求拦截器
 instance.interceptors.request.use(
@@ -46,6 +46,12 @@ instance.interceptors.response.use(
     console.log('response:', response)
     const { loading = true } = response.config
     if (loading) cancelLoading()
+    const { code, data, msg } = response.data
+    if (code === 0) {
+      return data
+    } else {
+      return response.data
+    }
     // const { code, data, message } = response.data
     // if (code === 200) return data
     // else if (code === 401) {

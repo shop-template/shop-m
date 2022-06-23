@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import cookie from '@/plugins/cookie'
 import { Toast } from 'vant'
+import cookie from '@/plugins/cookie'
+import { apiLogin } from '@/api'
 
 export const useUserStore = defineStore('userStore', {
   state: () => {
@@ -21,20 +22,11 @@ export const useUserStore = defineStore('userStore', {
     }
   },
   actions: {
-    async loginInFn() {
-      const toast = Toast.loading({
-        message: '加载中...'
-      })
-      console.log('loginInFn')
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          toast.clear()
-          cookie.set(import.meta.env.VITE_token, this.demoCookie, { path: '/', expires: 7 })
-          this.$patch((state) => {
-            state.userInfo = state.demoUserInfo
-          })
-          resolve(this.demoUserInfo)
-        }, 1000)
+    async loginInFn(params) {
+      const res = await apiLogin(params)
+      cookie.set(import.meta.env.VITE_token, res.token, { path: '/', expires: 7 })
+      this.$patch((state) => {
+        state.userInfo = res.userInfo
       })
     },
     async loginOutFn() {

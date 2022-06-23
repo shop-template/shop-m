@@ -16,5 +16,13 @@ export default defineConfig({
     styleImport({
       resolves: [VantResolve()],
     }),
-  ]
+  ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8888',
+        changeOrigin: true
+      }
+    }
+  }
 })
