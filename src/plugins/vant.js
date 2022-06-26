@@ -22,7 +22,9 @@ import {
   ImagePreview,
   AddressList,
   AddressEdit,
-  Area
+  Area,
+  Swipe,
+  SwipeItem
 } from 'vant'
 
 Toast.setDefaultOptions('loading', { forbidClick: true, duration: 0 })
@@ -54,4 +56,6 @@ export default function (app) {
     .use(AddressList)
     .use(AddressEdit)
     .use(Area)
+    .use(Swipe)
+    .use(SwipeItem)
 }

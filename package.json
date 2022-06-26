@@ -22,6 +22,7 @@
     "lodash.merge": "^4.6.2",
     "pinia": "^2.0.13",
     "signature_pad": "^4.0.5",
+    "swiper": "^8.2.4",
     "trim-canvas": "^0.1.2",
     "universal-cookie": "^4.0.4",
     "vant": "3.4.9",

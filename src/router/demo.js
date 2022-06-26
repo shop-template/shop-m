@@ -6,6 +6,7 @@ const navBar = () => import('../views/demo/navBar.vue')
 const network = () => import('../views/demo/network.vue')
 const vconsole = () => import('../views/demo/vconsole.vue')
 const signaturePad = () => import('../views/demo/signaturePad.vue')
+const swiper = () => import('../views/demo/swiper.vue')
 
 export default [
   {
@@ -78,6 +79,15 @@ export default [
         meta: {
           requiresAuth: false,
           title: 'SignaturePad 签字板'
+        }
+      },
+      {
+        path: 'swiper',
+        name: 'swiper',
+        component: swiper,
+        meta: {
+          requiresAuth: false,
+          title: 'swiper 轮播'
         }
       },
     ]

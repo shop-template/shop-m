@@ -1,7 +1,24 @@
 <template>
-  <div class="home-page">
-    <div class="swiper-outer">
-      <swiper-component :list="swiper.list"></swiper-component>
+  <div class="block block-no-margin">
+    <div class="block-title van-hairline--bottom">
+      <a class="block-title-a" href="https://www.swiper.com.cn/" target="_blank" rel="noopener noreferrer">1. swiper 封装</a>
+      <icon-outside-station></icon-outside-station>
+    </div>
+    <div class="block-body block-body-no-padding">
+      <div class="swiper-outer">
+        <swiper-component :list="swiper.list"></swiper-component>
+      </div>
+    </div>
+  </div>
+  <div class="block block-no-margin">
+    <div class="block-title van-hairline--bottom">
+      <a class="block-title-a" href="https://vant-contrib.gitee.io/vant/#/zh-CN/swipe" target="_blank" rel="noopener noreferrer">2. vant swiper 封装</a>
+      <icon-outside-station></icon-outside-station>
+    </div>
+    <div class="block-body block-body-no-padding">
+      <div class="swiper-outer">
+        <vant-swiper :list="swiper.list"></vant-swiper>
+      </div>
     </div>
   </div>
 </template>
@@ -9,6 +26,8 @@
 <script setup>
 import { reactive } from 'vue'
 import SwiperComponent from '@/components/SwiperComponent.vue'
+import VantSwiper from '@/components/VantSwiper.vue'
+import IconOutsideStation from '@/components/IconOutsideStation.vue'
 import shopHome from '@/assets/home-swiper/shop-home.png'
 import shopGuide from '@/assets/home-swiper/shop-guide.png'
 import shopPlugins from '@/assets/home-swiper/shop-plugins.png'
@@ -57,7 +76,7 @@ const swiper = reactive({
 </script>
 
 <style lang="less" scoped>
-@import './../../styles/common.less';
+@import './../../styles/demo.less';
 .swiper-outer {
   height: 194px;
 }
