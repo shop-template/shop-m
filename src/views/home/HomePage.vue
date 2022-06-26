@@ -1,14 +1,14 @@
 <template>
   <div class="home-page">
     <div class="swiper-outer">
-      <swiper-component :list="swiper.list"></swiper-component>
+      <vant-swiper :list="swiper.list"></vant-swiper>
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive } from 'vue'
-import SwiperComponent from '@/components/SwiperComponent.vue'
+import VantSwiper from '@/components/VantSwiper.vue'
 import shopHome from '@/assets/home-swiper/shop-home.png'
 import shopGuide from '@/assets/home-swiper/shop-guide.png'
 import shopPlugins from '@/assets/home-swiper/shop-plugins.png'

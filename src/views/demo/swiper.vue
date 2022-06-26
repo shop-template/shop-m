@@ -1,23 +1,23 @@
 <template>
   <div class="block block-no-margin">
     <div class="block-title van-hairline--bottom">
-      <a class="block-title-a" href="https://www.swiper.com.cn/" target="_blank" rel="noopener noreferrer">1. swiper 封装</a>
-      <icon-outside-station></icon-outside-station>
-    </div>
-    <div class="block-body block-body-no-padding">
-      <div class="swiper-outer">
-        <swiper-component :list="swiper.list"></swiper-component>
-      </div>
-    </div>
-  </div>
-  <div class="block block-no-margin">
-    <div class="block-title van-hairline--bottom">
-      <a class="block-title-a" href="https://vant-contrib.gitee.io/vant/#/zh-CN/swipe" target="_blank" rel="noopener noreferrer">2. vant swiper 封装</a>
+      <a class="block-title-a" href="https://vant-contrib.gitee.io/vant/#/zh-CN/swipe" target="_blank" rel="noopener noreferrer">1. vant swiper 封装</a>
       <icon-outside-station></icon-outside-station>
     </div>
     <div class="block-body block-body-no-padding">
       <div class="swiper-outer">
         <vant-swiper :list="swiper.list"></vant-swiper>
+      </div>
+    </div>
+  </div>
+  <div class="block block-no-margin">
+    <div class="block-title van-hairline--bottom">
+      <a class="block-title-a" href="https://www.swiper.com.cn/" target="_blank" rel="noopener noreferrer">2. swiper 封装</a>
+      <icon-outside-station></icon-outside-station>
+    </div>
+    <div class="block-body block-body-no-padding">
+      <div class="swiper-outer">
+        <swiper-component :list="swiper.list"></swiper-component>
       </div>
     </div>
   </div>
