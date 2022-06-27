@@ -1,7 +1,8 @@
 import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
-import styleImport, { VantResolve } from 'vite-plugin-style-import'
+import Components from 'unplugin-vue-components/vite'
+import { VantResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,9 +14,9 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    styleImport({
-      resolves: [VantResolve()],
-    }),
+    Components({
+      resolvers: [VantResolver()],
+    })
   ],
   test: {
     environment: 'jsdom'

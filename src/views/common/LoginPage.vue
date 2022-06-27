@@ -145,7 +145,14 @@ const onSubmit = (values) => {
   if (tabActive.value === 0) {
     params = {
       username: username.value,
-      password: password.value
+      password: password.value,
+      tabActive: tabActive.value
+    }
+  } else {
+    params = {
+      phone: phone.value,
+      sms: sms.value,
+      tabActive: tabActive.value
     }
   }
 

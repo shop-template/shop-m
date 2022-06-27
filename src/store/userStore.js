@@ -23,11 +23,28 @@ export const useUserStore = defineStore('userStore', {
   },
   actions: {
     async loginInFn(params) {
-      const res = await apiLogin(params)
-      cookie.set(import.meta.env.VITE_token, res.token, { path: '/', expires: 7 })
-      this.$patch((state) => {
-        state.userInfo = res.userInfo
-      })
+      if (params.tabActive === 0) {
+        const res = await apiLogin(params)
+        cookie.set(import.meta.env.VITE_token, res.token, { path: '/', expires: 7 })
+        this.$patch((state) => {
+          state.userInfo = res.userInfo
+        })
+      } else {
+        const toast = Toast.loading({
+          message: '加载中...'
+        })
+        console.log('loginInFn')
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            toast.clear()
+            cookie.set(import.meta.env.VITE_token, this.demoCookie, { path: '/', expires: 7 })
+            this.$patch((state) => {
+              state.userInfo = state.demoUserInfo
+            })
+            resolve(this.demoUserInfo)
+          }, 1000)
+        })
+      }
     },
     async loginOutFn() {
       const toast = Toast.loading({

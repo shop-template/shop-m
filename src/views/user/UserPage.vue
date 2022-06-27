@@ -2,7 +2,7 @@
   <div class="user-page">
     <div @click="userHeaderClick" class="user-header">
       <div class="user-img-box">
-        <van-image v-if="userInfo.headerImg" class="user-img" lazy-load :src="userInfo.headerImg" @click.stop="userImgPreview"></van-image>
+        <van-image v-if="userInfo.headerImg" class="user-img" lazy-load :src="userInfo.headerImg" @click.stop="userImgPreviewFn"></van-image>
         <van-image v-else class="user-img" lazy-load></van-image>
       </div>
       <div class="user-content">
@@ -23,10 +23,6 @@
         <van-cell v-for="item in cellList" :key="item.icon" v-bind="item" />
       </van-cell-group>
     </div>
-
-    <van-image-preview v-model:show="userImgShow" :images="[userInfo.headerImg]" closeable>
-      <template v-slot:index>{{ userInfo.name }}</template>
-    </van-image-preview>
   </div>
 </template>
 
@@ -34,6 +30,7 @@
 import { reactive, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import { ImagePreview } from 'vant'
 import { useUserStore } from '@/store'
 import cookie from '@/plugins/cookie'
 
@@ -54,9 +51,11 @@ function userHeaderClick () {
   }
 }
 
-const userImgShow = ref(false)
-function userImgPreview () {
-  userImgShow.value = true
+function userImgPreviewFn () {
+  ImagePreview({
+    images: [userInfo.value.headerImg],
+    closeable: true,
+  })
 }
 
 const cellList = reactive([

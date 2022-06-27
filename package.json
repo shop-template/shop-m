@@ -25,7 +25,7 @@
     "swiper": "^8.2.4",
     "trim-canvas": "^0.1.2",
     "universal-cookie": "^4.0.4",
-    "vant": "3.4.9",
+    "vant": "^3.5.2",
     "vconsole": "^3.14.6",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"
@@ -38,6 +38,7 @@
     "jsdom": "^20.0.0",
     "less": "^4.1.2",
     "postcss-px-to-viewport": "^1.1.1",
+    "unplugin-vue-components": "^0.20.1",
     "vite": "^2.9.5",
     "vite-plugin-style-import": "^1.4.1",
     "vitest": "^0.15.2"
