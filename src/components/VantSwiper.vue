@@ -56,7 +56,7 @@ const props = defineProps({
   --van-swipe-indicator-size: 8px;
   --van-swipe-indicator-inactive-opacity: 0.2;
   --van-swipe-indicator-inactive-background-color: #000;
-  .swiper-link，
+  .swiper-link,
   .swiper-img {
     width: 100%;
     height: 100%;
