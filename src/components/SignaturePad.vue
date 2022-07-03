@@ -109,6 +109,10 @@ function getTrimmedCanvas() {
 }
 
 function getSignaturePad() {
+  if (signaturePad.isEmpty()) {
+    Toast('请先提供签名')
+    return false
+  }
   return signaturePad
 }
 
@@ -226,6 +230,7 @@ function saveAsJpg(downloadName) {
   font-size: 0;
 }
 .signature-pad-canvas {
+  width: 100%;
   height: @canvas-height;
 }
 </style>
