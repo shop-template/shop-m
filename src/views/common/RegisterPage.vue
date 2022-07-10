@@ -65,7 +65,7 @@ function goForgetPath () {
   router.replace({ path: '/forget' })
 }
 
-const logoForm = ref(null)
+const logoForm = ref()
 const phone = ref('')
 const sms = ref('')
 

@@ -3,6 +3,6 @@
  * @param {String} value 
  * @returns String
  */
- export function getPrefix(value){
+ export function getAddPrefix(value){
   return `${import.meta.env.VITE_prefix}_${value}`
 }

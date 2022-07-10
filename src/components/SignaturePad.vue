@@ -70,7 +70,7 @@ defineExpose({
 })
 
 const colorActive = ref(props.colors[0])
-const signaturePadCanvas = ref(null)
+const signaturePadCanvas = ref()
 let signaturePad = null
 onMounted(() => {
   nextTick(() => {

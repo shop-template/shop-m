@@ -47,7 +47,7 @@ const route = useRoute()
 
 const password = ref('')
 const passwordAgain = ref('')
-const changePasswordForm = ref(null)
+const changePasswordForm = ref()
 
 function passwordAgainFocus () {
   changePasswordForm.value.validate('password')

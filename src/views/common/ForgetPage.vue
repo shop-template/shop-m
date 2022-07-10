@@ -77,7 +77,7 @@ function goRegisterPath () {
   router.replace({ path: '/register' })
 }
 
-const logoForm = ref(null)
+const logoForm = ref()
 const phone = ref('')
 const sms = ref('')
 const password = ref('')

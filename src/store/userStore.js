@@ -24,10 +24,14 @@ export const useUserStore = defineStore('userStore', {
   actions: {
     async loginInFn(params) {
       if (params.tabActive === 0) {
+        const toast = Toast.loading({
+          message: '加载中...'
+        })
         const res = await apiLogin(params)
-        cookie.set(import.meta.env.VITE_token, res.token, { path: '/', expires: 7 })
+        toast.clear()
+        cookie.set(import.meta.env.VITE_token, res.data.data.token, { path: '/', expires: 7 })
         this.$patch((state) => {
-          state.userInfo = res.userInfo
+          state.userInfo = res.data.data.userInfo
         })
       } else {
         const toast = Toast.loading({

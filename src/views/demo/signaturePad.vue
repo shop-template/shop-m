@@ -53,9 +53,9 @@ import { ref } from 'vue'
 import { Toast } from 'vant'
 import SignaturePad from './../../components/SignaturePad.vue'
 
-let signaturePad1 = ref(null)
+let signaturePad1 = ref()
 let canvasDataURL1 = ref('')
-let signaturePad2 = ref(null)
+let signaturePad2 = ref()
 let canvasDataURL2 = ref('')
 const colors = ['#000', '#aaa', '#f00', '#0f0', '#00f']
 

@@ -1,5 +1,5 @@
 export * from './getType'
 export * from './typeValidator'
 export * from './formPattern'
-export * from './getPrefix'
+export * from './getAddPrefix'
 export * from './canvas'

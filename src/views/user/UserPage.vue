@@ -2,8 +2,7 @@
   <div class="user-page">
     <div @click="userHeaderClick" class="user-header">
       <div class="user-img-box">
-        <van-image v-if="userInfo.headerImg" class="user-img" lazy-load :src="userInfo.headerImg" @click.stop="userImgPreviewFn"></van-image>
-        <van-image v-else class="user-img" lazy-load></van-image>
+        <van-image class="user-img" :src="userInfo.headerImg" @click.stop="userImgPreviewFn"></van-image>
       </div>
       <div class="user-content">
         <template v-if="userStore.isLogin">

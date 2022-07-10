@@ -102,7 +102,7 @@ const tabList = [
 ]
 const tabActive = ref(tabList[0].value)
 
-const logoForm = ref(null)
+const logoForm = ref()
 // 密码
 const username = ref('aaa')
 const password = ref('123456')
@@ -144,15 +144,15 @@ const onSubmit = (values) => {
   let params
   if (tabActive.value === 0) {
     params = {
-      username: username.value,
-      password: password.value,
-      tabActive: tabActive.value
+      username: values.username,
+      password: values.password,
+      tabActive: tabActive.value,
     }
   } else {
     params = {
-      phone: phone.value,
-      sms: sms.value,
-      tabActive: tabActive.value
+      phone: values.phone,
+      sms: values.sms,
+      tabActive: tabActive.value,
     }
   }
 

@@ -18,6 +18,8 @@ import { storeToRefs } from 'pinia'
 import { Toast } from 'vant'
 import Compressor from 'compressorjs'
 import { useUserStore } from '@/store'
+import { getType } from '@/utils'
+import { Interface } from 'readline'
 
 const router = useRouter()
 const route = useRoute()
@@ -38,7 +40,7 @@ const featureList = computed(() => {
     },
     {
       title: '我的地址',
-      value: userInfo.name,
+      value: '',
       to: '/addressList'
     }
   ]
@@ -46,28 +48,62 @@ const featureList = computed(() => {
 
 // 头像上传最大 5M (图片经过 compressorjs 压缩之后的大小)
 const userImgMaxSize = 5 * 1024 * 1024
-const userImgUploader = ref(null)
+const userImgUploader = ref()
 function choseUserImgEvent () {
   userImgUploader.value.chooseFile()
 }
+let chooseFileLength = 0
 function userImgBeforeRead (file) {
+  Toast('文件压缩中...')
   return new Promise((resolve) => {
     // compressorjs 默认开启 checkOrientation 选项、图片压缩
-    new Compressor(file, {
-      success: resolve,
-      error(err) {
-        console.log(err.message);
-      },
-    })
+    if (getType(file) === 'Array') {
+      chooseFileLength = file.length
+      const filePromiseList = file.map(x => {
+        return new Promise((resolve) => {
+          new Compressor(x, {
+            success: resolve,
+            error(err) {
+              console.log(err.message);
+            },
+          })
+        })
+      })
+      Promise.all(filePromiseList).then(res => {
+        resolve(res)
+      })
+    } else {
+      chooseFileLength = 0
+      new Compressor(file, {
+        success: resolve,
+        error(err) {
+          console.log(err.message);
+        },
+      })
+    }
   })
 }
+
 function userImgOversize (file) {
-  Toast('文件大小不能超过 5M')
+  debugger
+  if (getType(file) === 'Array') {
+    let nameList = file.map(x => x.file.name)
+    Toast(`${nameList.join('、')}文件大小不能超过 5M`)
+  } else {
+    Toast('文件大小不能超过 5M')
+  }
 }
 function userImgAfterRead (file) {
   console.log(file)
   const formData = new FormData()
-  formData.append('file', file.file)
+  if (getType(file) === 'Array') {
+    if (file.length !== chooseFileLength) return
+    file.forEach((element, index) => {
+      formData.append(`file${index}`, element.file)
+    })
+  } else {
+    formData.append('file', file.file)
+  }
 
   // 自行处理上传逻辑
   const toast = Toast.loading({
@@ -75,7 +111,11 @@ function userImgAfterRead (file) {
   })
   setTimeout(() => {
     toast.clear()
-    userStore.userInfo.headerImg = file.content
+    if (getType(file) === 'Array') {
+      userStore.userInfo.headerImg = file[0].content
+    } else {
+      userStore.userInfo.headerImg = file.content
+    }
   }, 1000)
 }
 
@@ -90,5 +130,4 @@ function loginOutEvent () {
 
 <style lang="less" scoped>
 @import './../../styles/common.less';
-
 </style>
