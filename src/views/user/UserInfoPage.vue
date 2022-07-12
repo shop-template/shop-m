@@ -54,7 +54,7 @@ function choseUserImgEvent () {
 }
 let chooseFileLength = 0
 function userImgBeforeRead (file) {
-  Toast('文件压缩中...')
+  const toast = Toast('文件压缩中...')
   return new Promise((resolve) => {
     // compressorjs 默认开启 checkOrientation 选项、图片压缩
     if (getType(file) === 'Array') {
@@ -70,12 +70,16 @@ function userImgBeforeRead (file) {
         })
       })
       Promise.all(filePromiseList).then(res => {
+        toast.clear()
         resolve(res)
       })
     } else {
       chooseFileLength = 0
       new Compressor(file, {
-        success: resolve,
+        success: (res) => {
+          toast.clear()
+          resolve(res)
+        },
         error(err) {
           console.log(err.message);
         },
