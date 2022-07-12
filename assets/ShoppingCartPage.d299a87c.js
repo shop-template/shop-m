@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vue_export-helper.21dcd24c.js";import{o as r,c as o}from"./index.c2119dc6.js";const a={};function t(c,n){return r(),o("div",null," ShoppingCartPage ")}var s=e(a,[["render",t]]);export{s as default};

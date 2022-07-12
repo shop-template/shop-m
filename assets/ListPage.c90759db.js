@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vue_export-helper.21dcd24c.js";import{o as r,c as t}from"./index.c2119dc6.js";const c={};function o(a,n){return r(),t("div",null," ListPage ")}var f=e(c,[["render",o]]);export{f as default};
